@@ -61,6 +61,7 @@ public abstract class Application{
 			resourceMgr.setAppObserver(this.listener);
 			
 			communicationMgr = new Communication(userid);
+			communicationMgr.setApp(this);
 			new Thread(communicationMgr).start();
 			
 			userMgr = UserManager.init(communicationMgr, resourceMgr, userid);
@@ -150,7 +151,7 @@ public abstract class Application{
 		if(amm.action.equals("CONSUME")){
 
 			ResourceState r = (ResourceState) amm.pack;
-
+			System.out.println("mandando recibido desde "+amm.sender_id);
 			// En este ejemplo sacaremos una foto
 			resourceMgr.resourceAction(r.getId(), 0, null);
 
@@ -167,6 +168,7 @@ public abstract class Application{
 			AMMessage resp = new AMMessage(userMgr.getCurrentUser().getId()+"", "RECIEVE", respond);
 			
 			try {
+				System.out.println("mandando resultado a "+amm.sender_id);
 				communicationMgr.sendObject(resp , Integer.parseInt(amm.sender_id));
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
@@ -181,6 +183,7 @@ public abstract class Application{
 		
 		
 		if(amm.action.equals("RECIEVE")) {
+			System.out.println("recibiendo resultado de "+amm.sender_id);
 			this.recievedResources.put( new Integer(amm.sender_id) , amm.pack );
 		}
 

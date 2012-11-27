@@ -6,6 +6,8 @@ import java.util.*;
 import usermanager.UserManager;
 
 import cl.puc.dds.appmgr.external.ICommunicationMgr;
+import cl.puc.dds.appmgr.resources.AMMessage;
+import cl.puc.dds.appmgr.resources.Application;
 
 public class Communication implements Runnable, ICommunicationMgr
 {
@@ -13,7 +15,7 @@ public class Communication implements Runnable, ICommunicationMgr
 	private ArrayList<Integer> nodos;
 	private ServerSocket welcomeSocket;
 	private boolean envioDeObjeto = false; 
-	
+	private Application application;
 	
 	
 
@@ -265,9 +267,11 @@ public class Communication implements Runnable, ICommunicationMgr
 						ObjectInputStream oi = new ObjectInputStream(connectionSocket.getInputStream());
 						Object objetoRecibido = oi.readObject();
 						
-						if((UMMessage) objetoRecibido != null)
+						if(objetoRecibido instanceof UMMessage)
 						{
 							UserManager.getInstance().recieveMessage((UMMessage) objetoRecibido);
+						} else if (objetoRecibido instanceof AMMessage) {
+							this.application.recieveMesagge((AMMessage)objetoRecibido);
 						}
 	
 					}
@@ -280,7 +284,7 @@ public class Communication implements Runnable, ICommunicationMgr
 		}
 		catch (Exception e) 
 		{
-			System.out.println("Error al recibir el mensaje");
+			System.out.println("Error al recibir el mensaje"+e);
 		}
 	}
 /*
@@ -289,7 +293,10 @@ public class Communication implements Runnable, ICommunicationMgr
 		return objetoRecibido;
 	}
 	*/
-
+	public void setApp(Application a)
+	{
+		this.application = a;
+	}
 	
 	public ArrayList<Object> requestDevicesOnline() {
 		return null;
