@@ -59,10 +59,7 @@ public class UserManager implements Serializable {
 	 * default status (disconnected).
 	 */
 	private UserManager(Communication com, int id) {
-		
-		
-		
-		
+		System.out.println("Iniciando UserManager con el id "+id);
 		sesions = new ArrayList<Sesion>();
 		STATUS = Status.DISCONNECTED;
 
@@ -94,12 +91,14 @@ public class UserManager implements Serializable {
 			if (!this.communication.connectToSession()) {
 				// Soy el primero en conectarme por lo que tengo que crear la
 				// session
+				System.out.println("Soy el primero en conectarme por lo que tengo que crear la session");
 				joinSesion(new Sesion());
 				sesions.add(currentSesion);
 				currentSesion.getUsersList().add(currentUser);
 			} else {
 				// Envio un mensaje al primer usario de la sesion para que me
 				// devuelva la sesion
+				System.out.println("Envio un mensaje al primer usuario de la sesion para que me devuelva la sesion");
 				int first = this.communication.getNodos().get(0);
 				UMMessage message = new UMMessage(this.currentUser.getId(), "get_session", null);
 				this.communication.sendObject(message, first);
@@ -114,6 +113,7 @@ public class UserManager implements Serializable {
 
 	public void recieveMessage(UMMessage message) {
 		int sender = message.sender_id;
+		System.out.println("Recibo del usuario "+sender+" un "+message.action);
 		if (message.action == "get_session") {
 			UMMessage response = new UMMessage(this.currentUser.getId(), "set_session",
 					getCurrentSesion());
@@ -355,20 +355,6 @@ public class UserManager implements Serializable {
 		}
 	}
 
-	public Sesion getCurrentSession() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void disconnectUser(int user_id) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void updateUser(User updatedUser) {
-		// TODO Auto-generated method stub
-
-	}
 
 
 	public List<ResourceState> getResourceList(){  
