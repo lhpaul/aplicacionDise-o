@@ -19,6 +19,7 @@ public class main {
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
 		try {
+			Thread.currentThread().sleep(5000);
 			while (true) {
 				/*Thread.currentThread().sleep(5000);
 				System.out.println("imprimiendo lista de recursos:");
@@ -38,6 +39,8 @@ public class main {
 					if(app.userResource(ListaRecursos.get(indice)))
 					{
 						System.out.println("Peticion exitosa");
+						Object o = app.getResourcesFlags().get(indice);
+						System.out.println(o.toString());
 					} else {
 						System.out.println("Peticion fallo");
 					}
