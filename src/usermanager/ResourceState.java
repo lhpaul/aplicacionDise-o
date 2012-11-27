@@ -1,9 +1,11 @@
 package usermanager;
 
+import java.io.Serializable;
+
 import IIC2113.resource.manager.IConsumptionObs;
 import cl.puc.dds.appmgr.external.IResource;
 
-public class ResourceState implements IResource {
+public class ResourceState implements IResource, Serializable {
     // 0 1 2 3 4 5
     public static final String[] RESOURCES = { "AVAILABLE", "IN USE", "NOT PRESENT", "RECORDING", "STREAMING",
             "NOT AVAILABLE" };

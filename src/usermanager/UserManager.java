@@ -108,7 +108,8 @@ public class UserManager implements Serializable {
 	public void recieveMessage(UMMessage message) {
 		int sender = message.sender_id;
 		System.out.println("Recibo del usuario "+sender+" un "+message.action);
-		if (message.action == "get_session") {
+		if (message.action.equals("get_session")) {
+			System.out.println("Get session!!");
 			UMMessage response = new UMMessage(this.currentUser.getId(), "set_session",
 					getCurrentSesion());
 			try {
@@ -117,7 +118,7 @@ public class UserManager implements Serializable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else if (message.action == "set_session") {
+		} else if (message.action.equals("set_session")) {
 			joinSesion((Sesion) message.pack);
 			currentSesion.getUsersList().add(currentUser);
 			sesions.add(currentSesion);
@@ -129,12 +130,12 @@ public class UserManager implements Serializable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else if (message.action == "add_user") {
+		} else if (message.action.equals("add_user")) {
 			currentSesion.getUsersList().add((User) message.pack);
-		} else if (message.action == "remove_user") {
+		} else if (message.action.equals("remove_user")) {
 			currentSesion.getUsersList().remove((User) message.pack);
 		}		
-		else if( message.action == "update_state"){
+		else if( message.action.equals( "update_state")){
 			int[] new_state = (int[]) message.pack;
 			this.updateState(new_state[0], new_state[1]);			
 		}
