@@ -139,6 +139,11 @@ public abstract class Application{
 	}
 
 
+	
+	
+	HashMap<Integer , Object> recievedResources = new HashMap<Integer , Object>();
+	
+	
 	public Object recieveMesagge(AMMessage amm){
 
 
@@ -159,7 +164,24 @@ public abstract class Application{
 				respond = resourcesFlags.get(r);
 			}
 
+			AMMessage resp = new AMMessage(userMgr.getCurrentUser().getId()+"", "RECIEVE", respond);
+			
+			try {
+				communicationMgr.sendObject(resp , Integer.parseInt(amm.sender_id));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			return respond;			
+		}
+		
+		
+		if(amm.action.equals("RECIEVE")) {
+			this.recievedResources.put( new Integer(amm.sender_id) , amm.pack );
 		}
 
 		return null;
