@@ -1,7 +1,5 @@
 package IIC2113.resource.manager;
 
-import modelo.IPersistencia;
-import modelo.Persistencia;
 import cl.puc.dds.appmgr.external.IResource;
 import externos.Controlador;
 import usermanager.ResourceState;
@@ -10,11 +8,15 @@ public class ResourceManager implements IConsumptionObs{
 
 	private IAppObs observer;
 	private IResource[] resources;
-	private IPersistencia persistencia;
 	private Controlador controlador;
 	private int user_id,device_id;
 	public static final String[] RESOURCES = {"CAMERA","QR"};
 	public static final String[] R1_ACTIONS = {"TAKE_PICTURE","START_RECORDING","STOP_RECORDING"};
+	
+	public ResourceManager()
+	{
+		this.init();
+	}
 	
 	public String[] getResourcesList()//para User manager
 	{
@@ -47,11 +49,6 @@ public class ResourceManager implements IConsumptionObs{
 			aux.setObserver((IConsumptionObs)this);
 			resources[i] = aux;
 		}
-	}
-	
-	public void setPersistencia(IPersistencia _persistencia)
-	{
-		this.persistencia = _persistencia;
 	}
 	
 	public void setAppObserver(IAppObs _observer)
