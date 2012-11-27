@@ -66,7 +66,6 @@ public class ResourceState implements IResource {
     	return type;
     }
 
-	@Override
 	public int getOwnerId() {
 		return this.user_id;
 	}
