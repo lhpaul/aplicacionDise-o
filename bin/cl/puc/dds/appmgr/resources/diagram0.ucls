@@ -1,0 +1,158 @@
+<class-diagram version="1.0.10" icons="true" automaticImage="PNG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="cl.puc.dds.appmgr.resources.ApplicationDaemon" 
+    project="DDSAppMgr" file="/DDSAppMgr/src/cl/puc/dds/appmgr/resources/ApplicationDaemon.java" binary="false">    
+    <position height="-1" width="-1" x="244" y="171"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="2" corner="BOTTOM_RIGHT" language="java" name="cl.puc.dds.appmgr.external.ICommunicationMgr" 
+    project="DDSAppMgr" file="/DDSAppMgr/src/cl/puc/dds/appmgr/external/ICommunicationMgr.java" binary="false">    
+    <position height="-1" width="-1" x="1279" y="395"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="cl.puc.dds.appmgr.resources.ApplicationListener" 
+    project="DDSAppMgr" file="/DDSAppMgr/src/cl/puc/dds/appmgr/resources/ApplicationListener.java" binary="false">    
+    <position height="-1" width="-1" x="505" y="506"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="4" corner="BOTTOM_RIGHT" language="java" name="cl.puc.dds.appmgr.external.IDevice" project="DDSAppMgr" 
+    file="/DDSAppMgr/src/cl/puc/dds/appmgr/external/IDevice.java" binary="false">    
+    <position height="-1" width="-1" x="733" y="665"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface id="5" corner="BOTTOM_RIGHT" language="java" name="cl.puc.dds.appmgr.external.IResource" 
+    project="DDSAppMgr" file="/DDSAppMgr/src/cl/puc/dds/appmgr/external/IResource.java" binary="false">    
+    <position height="-1" width="-1" x="1419" y="48"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface id="6" corner="BOTTOM_RIGHT" language="java" name="cl.puc.dds.appmgr.external.IPersistenceMgr" 
+    project="DDSAppMgr" file="/DDSAppMgr/src/cl/puc/dds/appmgr/external/IPersistenceMgr.java" binary="false">    
+    <position height="-1" width="-1" x="1260" y="254"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface id="7" corner="BOTTOM_RIGHT" language="java" name="cl.puc.dds.appmgr.external.IResourceMgr" 
+    project="DDSAppMgr" file="/DDSAppMgr/src/cl/puc/dds/appmgr/external/IResourceMgr.java" binary="false">    
+    <position height="-1" width="-1" x="1253" y="122"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="8" corner="BOTTOM_RIGHT" language="java" name="cl.puc.dds.appmgr.resources.DeviceState" project="DDSAppMgr" 
+    file="/DDSAppMgr/src/cl/puc/dds/appmgr/resources/DeviceState.java" binary="false">    
+    <position height="-1" width="-1" x="734" y="510"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="9" corner="BOTTOM_RIGHT" language="java" name="cl.puc.dds.appmgr.resources.Application" project="DDSAppMgr" 
+    file="/DDSAppMgr/src/cl/puc/dds/appmgr/resources/Application.java" binary="false">    
+    <position height="-1" width="-1" x="649" y="171"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association id="10">    
+    <bendpoint x="649" y="387"/>    
+    <bendpoint x="692" y="387"/>    
+    <bendpoint x="734" y="387"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="11" name="state"/>      
+      <multiplicity id="12" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="13">    
+    <bendpoint x="1052" y="170"/>    
+    <bendpoint x="1052" y="394"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="14" name="communicationMgr"/>      
+      <multiplicity id="15" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="16">    
+    <bendpoint x="1050" y="170"/>    
+    <bendpoint x="1050" y="48"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="17" name="resources"/>      
+      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="19">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="20" name="device"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="22">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="23" name="app"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="25">    
+    <bendpoint x="1050" y="170"/>    
+    <bendpoint x="1096" y="122"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="26" name="resourceMgr"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="28">    
+    <bendpoint x="1054" y="170"/>    
+    <bendpoint x="1102" y="254"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="29" name="persistenceMgr"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <bendpoint x="649" y="386"/>    
+    <bendpoint x="504" y="386"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="32" name="listener"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
