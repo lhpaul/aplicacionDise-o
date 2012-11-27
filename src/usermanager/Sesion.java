@@ -17,6 +17,7 @@ public class Sesion implements Serializable {
     private String password;
     private List<User> users;
     private User owner;
+    private int next_resource_id = 0;
 
     /**
      * Constructor for Sesion.
@@ -69,5 +70,10 @@ public class Sesion implements Serializable {
      */
     public List<User> getUsersList(){
         return users;
+    }
+    
+    public int getNextResourceId(){
+    	this.next_resource_id++;
+    	return next_resource_id;
     }
 }

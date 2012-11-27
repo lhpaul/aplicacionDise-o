@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import IIC2113.resource.manager.IUserManager;
+import IIC2113.resource.manager.ResourceManager;
 
 import usermanager.Device;
 import usermanager.ResourceState;
@@ -29,6 +30,7 @@ public class UserManager implements Serializable {
 	private Device currentDevice;	
 	
 	private Communication communication;
+	public static ResourceManager rmanager = null;
 
 
 	public Communication getCommunication() {
@@ -45,9 +47,14 @@ public class UserManager implements Serializable {
 		return um;
 	}
 	
-	public static UserManager init(Communication com , int id) {
+	public static UserManager init(Communication com , ResourceManager rm, int id) {
 		if (um == null) {
 			um = new UserManager(com, id);
+		}
+		
+		if( rmanager == null){
+			rmanager = rm;
+			
 		}
 		return um;
 	}
@@ -64,22 +71,6 @@ public class UserManager implements Serializable {
 		STATUS = Status.DISCONNECTED;
 
 		currentUser = new User(id);
-
-		List<ResourceState> lista_recursos = new ArrayList<ResourceState>();
-
-		ResourceState r1 = new ResourceState();
-		//ResourceState r2 = new ResourceState();
-		r1.setId(1);
-		r1.setUserId(currentUser.getId());
-		r1.setType("Camara");
-		//r2.setId(2);
-		lista_recursos.add(r1);
-		
-		currentUser.setResources(lista_recursos);
-		
-		//lista_recursos.add(r2);
-
-		
 		
 		
 		
@@ -211,7 +202,20 @@ public class UserManager implements Serializable {
 		this.currentSesion = sesion;
 		STATUS = Status.CONNECTED;
 
-		//Falta metodo de agregar lista de recursos de ResourceManager (Setear ID recursos y usuario)
+		String[] user_resrouces =  rmanager.getResourcesList();
+		List<ResourceState> lista_recursos = new ArrayList<ResourceState>();
+		for(int j =0; j< user_resrouces.length; j++){
+			//agregar los recursos al usuario
+			ResourceState r1 = new ResourceState();			
+			r1.setId(this.currentSesion.getNextResourceId());
+			r1.setUserId(currentUser.getId());
+			r1.setType(user_resrouces[j]);			
+			lista_recursos.add(r1);			
+		}
+		
+		currentUser.setResources(lista_recursos);
+		
+		
 	}
 
 	/**
@@ -369,6 +373,11 @@ public class UserManager implements Serializable {
 		
 		return lista_recursos;   
 
+	}
+	
+	
+	public void setResrouceManager(ResourceManager rsrc_mg){
+		this.rmanager = rsrc_mg;
 	}
 
 }

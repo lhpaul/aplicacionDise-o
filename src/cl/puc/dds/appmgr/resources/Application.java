@@ -61,7 +61,8 @@ public abstract class Application{
 			communicationMgr = new Communication(userid);
 			new Thread(communicationMgr).start();
 			
-			userMgr = UserManager.init(communicationMgr, userid);
+			userMgr = UserManager.init(communicationMgr, resourceMgr, userid);
+			
 			
 
 
