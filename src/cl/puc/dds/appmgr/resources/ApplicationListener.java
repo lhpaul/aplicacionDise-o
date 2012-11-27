@@ -42,11 +42,9 @@ public class ApplicationListener implements IAppObs{
 
 	/** Exigencias de IAppObs en ResourceMrg equivalente a este ApplicationListener */
 	public void resourceFinished(int resource_id, Object object) {
-		
-		// TODO fix next line:
-		IResource r = (IResource) new Object();
-		
-		this.app.getResourcesFlags().put( r , object);
+		Integer i = new Integer(resource_id);
+		this.app.getResourcesFlags().put( i , object);
+
 	}
 
 	public void resourceFailed(int resource_id, String error) {

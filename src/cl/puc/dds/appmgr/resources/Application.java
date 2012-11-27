@@ -7,6 +7,7 @@ import java.util.List;
 
 import IIC2113.resource.manager.ResourceManager;
 
+import usermanager.Device;
 import usermanager.ResourceState;
 import usermanager.UserManager;
 
@@ -14,6 +15,7 @@ import communication.Communication;
 
 import cl.puc.dds.appmgr.external.IApplication;
 import cl.puc.dds.appmgr.external.ICommunicationMgr;
+import cl.puc.dds.appmgr.external.IDevice;
 import cl.puc.dds.appmgr.external.IPersistenceMgr;
 import cl.puc.dds.appmgr.external.IResource;
 import cl.puc.dds.appmgr.external.IResourceMgr;
@@ -48,7 +50,7 @@ public abstract class Application{
 
 	public Application() 
 	{
-
+		state = new DeviceState();
 
 		try {
 
@@ -105,9 +107,9 @@ public abstract class Application{
 
 	public boolean userResource(ResourceState r){
 
-		String id = state.getDevice().getId();
+		//String id = r.getOwnerId(); //state.getDevice().getId();
 
-		Object amm = new AMMessage(id, "CONSUME" , r); 
+		Object amm = new AMMessage(userMgr.getCurrentUser().getId()+"", "CONSUME" , r); 
 		// CONSUME indica que se va a pedir "usar" el recurso. Aquí podrían ir otros parámetros
 		// dependiendo del recurso. Ejemplo "burdo": Consumir foto en baja resolución. "CONSUME_LOWRES".
 
@@ -125,14 +127,14 @@ public abstract class Application{
 	}
 
 
-	public HashMap<IResource, Object> resourcesFlags = new HashMap<IResource, Object>();
+	public HashMap<Integer, Object> resourcesFlags = new HashMap<Integer, Object>();
 
-	public HashMap<IResource, Object> getResourcesFlags() {
+	public HashMap<Integer, Object> getResourcesFlags() {
 		return resourcesFlags;
 	}
 
 
-	public void setResourcesFlags(HashMap<IResource, Object> resourcesFlags) {
+	public void setResourcesFlags(HashMap<Integer, Object> resourcesFlags) {
 		this.resourcesFlags = resourcesFlags;
 	}
 
@@ -142,18 +144,19 @@ public abstract class Application{
 
 		if(amm.action.equals("CONSUME")){
 
-			IResource r = (IResource) amm.pack;
+			ResourceState r = (ResourceState) amm.pack;
 
 			// En este ejemplo sacaremos una foto
 			resourceMgr.resourceAction(r.getId(), 0, null);
 
 			if(!resourcesFlags.containsKey(r)){
-				resourcesFlags.put(r, null);
+				resourcesFlags.put(new Integer(r.getId()), null);
 			}
 
 			Object respond = resourcesFlags.get(r);
 
-			while(respond == null){				
+			while(respond == null){		
+				respond = resourcesFlags.get(r);
 			}
 
 			return respond;			
