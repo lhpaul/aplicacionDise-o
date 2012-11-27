@@ -230,7 +230,9 @@ public class Communication implements Runnable, ICommunicationMgr
 							{	
 								System.out.println("Te has unido a "+clientSentence.substring(0,4));
 								getListaNodos(clientSentence.substring(7));
+								System.out.println("Agregando nodo: "+id);
 								nodos.add(id);
+								System.out.println("Tama–o lista nodos: "+nodos.size());
 								updateEveryonesList();
 							}
 							//[Mensaje normal] Lo imprime en consola
