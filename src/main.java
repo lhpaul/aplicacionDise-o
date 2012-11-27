@@ -13,9 +13,21 @@ public class main {
 		// TODO Auto-generated method stub
 
 		MyApplication app = new MyApplication();
-		ArrayList<ResourceState> ListaRecursos = app.getAllForeignResources();
-		System.out.println(ListaRecursos.size());
-		
+		ArrayList<ResourceState> ListaRecursos;
+		try {
+			while (true) {
+				Thread.currentThread().sleep(5000);
+				System.out.println("imprimiendo lista de recursos:");
+				ListaRecursos = app.getAllForeignResources();
+				for (ResourceState r : ListaRecursos) {
+					System.out.println(r.getType());
+				}
+
+			}
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

@@ -381,7 +381,7 @@ public class UserManager implements Serializable {
 				}      
 		} 
 		
-		return currentUser.getResources();   
+		return lista_recursos;   
 
 	}
 
