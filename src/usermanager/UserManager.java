@@ -48,12 +48,15 @@ public class UserManager implements Serializable {
 	}
 	
 	public static UserManager init(Communication com , ResourceManager rm, int id) {
+		
+		if( rmanager == null){
+			rmanager = rm;
+			
 		if (um == null) {
 			um = new UserManager(com, id);
 		}
 		
-		if( rmanager == null){
-			rmanager = rm;
+	
 			
 		}
 		return um;
